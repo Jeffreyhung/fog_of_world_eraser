@@ -122,12 +122,8 @@ footer {
     color: white;
 }
 
-a {
+a.footer{
     color: white;
     text-decoration: underline;
+    color: white;
 }
-
-a:visited {
-color: white;
-}
-  
