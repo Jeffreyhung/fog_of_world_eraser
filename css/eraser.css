@@ -5,6 +5,7 @@ header {
     color: white;
     z-index: 999;
 }
+
 footer {
     width: 100%;
     position: absolute;
@@ -14,13 +15,13 @@ footer {
     z-index: 999;
 }
 
-#map { 
-    height: 100%; 
+#map {
+    height: 100%;
 }
 
 .menu {
     background-color: white;
-    border: 2px solid rgba(0,0,0,0.2);
+    border: 2px solid rgba(0, 0, 0, 0.2);
     border-radius: 0.4em;
     left: 1em;
     top: 1em;
@@ -49,7 +50,7 @@ footer {
     background-color: whitesmoke;
 
     transition: height 0.25s ease-out;
-    
+
     height: 20em;
 }
 
@@ -77,10 +78,11 @@ footer {
     border: 0.5px solid whitesmoke;
     color: black;
 }
+
 .menu h3 {
     padding: 0.5em 0.5em;
     margin: 0;
-    font-size:small;
+    font-size: small;
     border: 0.5px solid whitesmoke;
     color: black;
 }
@@ -89,10 +91,14 @@ footer {
     background-color: antiquewhite;
 }
 
-.menu a, p, label, legend {
+.menu a,
+p,
+label,
+legend {
     padding: 0.3em;
     margin: 0;
-    color: black;;
+    color: black;
+    ;
 }
 
 /* .menu input.slider {
@@ -109,48 +115,67 @@ footer {
 
 /* The slider itself */
 .slider {
-    -webkit-appearance: none;  /* Override default CSS styles */
+    -webkit-appearance: none;
+    /* Override default CSS styles */
     appearance: none;
-    width: 12em; /* Full-width */
-    height: 0.8em; /* Specified height */
-    background: orange; /* Grey background */
-    outline: none; /* Remove outline */
-    opacity: 0.5; /* Set transparency (for mouse-over effects on hover) */
-    -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+    width: 12em;
+    /* Full-width */
+    height: 0.8em;
+    /* Specified height */
+    background: orange;
+    /* Grey background */
+    outline: none;
+    /* Remove outline */
+    opacity: 0.5;
+    /* Set transparency (for mouse-over effects on hover) */
+    -webkit-transition: .2s;
+    /* 0.2 seconds transition on hover */
     transition: opacity .2s;
-  }
+}
 
 .slider.color {
-    background-image: linear-gradient(to right, red,orange,yellow,green,blue,indigo,violet, red);
+    background-image: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet, red);
 }
+
 .slider.transparency {
     background: none;
     background-image: linear-gradient(to right, #80808040, white, black);
 }
+
 .slider.saturate {
     background-image: linear-gradient(to right, white, orange, red);
 }
-  
-  /* Mouse-over effects */
-  .slider:hover {
-    opacity: 1; /* Fully shown on mouse-over */
-  }
-  
-  .slider::-webkit-slider-thumb {
-    -webkit-appearance: none; /* Override default look */
+
+/* Mouse-over effects */
+.slider:hover {
+    opacity: 1;
+    /* Fully shown on mouse-over */
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    /* Override default look */
     appearance: none;
-    width: 1em; /* Set a specific slider handle width */
-    height: 1em; /* Slider handle height */
-    background: #04AA6D; /* Green background */
-    cursor: pointer; /* Cursor on hover */
-  }
-  
-  .slider::-moz-range-thumb {
-    width: 1.2em; /* Set a specific slider handle width */
-    height: 1.2em; /* Slider handle height */
-    background: #04AA6D; /* Green background */
-    cursor: pointer; /* Cursor on hover */
-  }
+    width: 1em;
+    /* Set a specific slider handle width */
+    height: 1em;
+    /* Slider handle height */
+    background: #04AA6D;
+    /* Green background */
+    cursor: pointer;
+    /* Cursor on hover */
+}
+
+.slider::-moz-range-thumb {
+    width: 1.2em;
+    /* Set a specific slider handle width */
+    height: 1.2em;
+    /* Slider handle height */
+    background: #04AA6D;
+    /* Green background */
+    cursor: pointer;
+    /* Cursor on hover */
+}
 
 
 .menu #importFile {
@@ -167,12 +192,12 @@ footer {
 
 .leaflet-control-container {
     background-color: white;
-    border: 2px solid rgba(0,0,0,0.2);
+    border: 2px solid rgba(0, 0, 0, 0.2);
     border-radius: 0.4em;
 }
 
 select {
-    border: 1px solid rgba(0,0,0,0.2);
+    border: 1px solid rgba(0, 0, 0, 0.2);
     border-radius: 0.2em;
     margin: 0.4em;
 }
@@ -181,7 +206,8 @@ select {
     width: 15em;
 }
 
-#startStation, #endStation {
+#startStation,
+#endStation {
     width: 6em;
 }
 
@@ -208,7 +234,7 @@ button:hover {
     width: 100%;
 }
 
-canvas.fogLayer  {
+canvas.fogLayer {
     outline: 10px solid green;
     transform-origin: left top;
     /* border: 10px solid green; */
@@ -230,6 +256,11 @@ canvas.fogLayer  {
     z-index: 900;
 }
 
-.leaflet-grab {cursor: auto;}
+.leaflet-grab {
+    cursor: auto;
+}
+
 /* crosshair */
-.leaflet-dragging .leaflet-grab {cursor: move;}
+.leaflet-dragging .leaflet-grab {
+    cursor: move;
+}

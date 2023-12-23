@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline'; img-src * mt1.google.com mt2.google.com mt3.google.com data:;">
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self' 'unsafe-inline'; img-src * mt1.google.com mt2.google.com mt3.google.com data:;">
 
     <meta name="format-detection" content="telephone=no">
     <meta name="msapplication-tap-highlight" content="no">
@@ -13,13 +15,13 @@
 
     <link rel="stylesheet" href="css/leaflet.css">
     <script src="lib/leaflet.js"></script>
-    <script src="lib/pako.min.js"></script>  
-    
+    <script src="lib/pako.min.js"></script>
+
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/eraser.css">
 
-    <link rel="stylesheet" href="css/leaflet-geoman.css">  
-    <script src="lib/leaflet-geoman.min.js"></script> 
+    <link rel="stylesheet" href="css/leaflet-geoman.css">
+    <script src="lib/leaflet-geoman.min.js"></script>
 
     <script src="lib/jszip.min.js"></script>
     <script src="lib/proj4.js"></script>
@@ -27,148 +29,154 @@
     <script src="lib/exif-heic.js"></script>
 
 </head>
+
 <body>
 
-<div id="circularcursor"></div>
-<div id="menu" class="menu">
-    <h2 id="fileTitle"><span i18n="fileTitle">File I/O</span><small>(F1)</small> </h2>
-    <div id="file" class="vertical active">
-        <fieldset id="importFile">
-            <legend i18n="importFile">Import FoW File</legend>
-            <p id="importMSG" i18n="importMSG"> Drag the FOW zip achive here</p>
-            <a href="#" i18n="openManually">Open Manually (Ctrl+O) </a>
-            <input type="file" id="inputFile" style="display:none" accept=".zip, .fwss">
-        </fieldset>
+    <div id="circularcursor"></div>
+    <div id="menu" class="menu">
+        <h2 id="fileTitle"><span i18n="fileTitle">File I/O</span><small>(F1)</small> </h2>
+        <div id="file" class="vertical active">
+            <fieldset id="importFile">
+                <legend i18n="importFile">Import FoW File</legend>
+                <p id="importMSG" i18n="importMSG"> Drag the FOW zip achive here</p>
+                <a href="#" i18n="openManually">Open Manually (Ctrl+O) </a>
+                <input type="file" id="inputFile" style="display:none" accept=".zip, .fwss">
+            </fieldset>
 
-        <div id="outputAll" class="horizontal" >
-            <label i18n="outputAll">Save All</label><label id="saveProcess"></label><label> (Ctrl+S)</label>
-        </div>
-        <div id="outputEdit" class="horizontal" title="Attention: IF there's any file that is zero bytes, remove them after copy & replace back to your archive.">
-            <label i18n="outputEdit">Save Edited Files</label><label> (Ctrl+Shift+S)</label>
-        </div>
-        <div id="outputAsFwss" class="horizontal" >
-            <label i18n="outputAsFwss">Save as FoW snapshot</label><label id="saveToFwssProcess"></label><label></label>
-        </div>
-        <div id="clearAll" class="horizontal">
-            <label i18n="clearAll">Clear All Data </label><label> (Ctrl+Q)</label>
-        </div>  
-    </div>
-
-    <h2 id="showModeTitle"><span i18n="showModeTitle">Display</span><small>(F2)</small> </h2>
-    <div id="showMode" class="vertical">
-        <div class="horizontal">
-            <div>
-                <input type="radio" id="fogMode" name="renderMode" value="fog" checked>
-                <label for="fogMode" i18n="fogMode">FOG</label><label>(F)</label><span></span>
+            <div id="outputAll" class="horizontal">
+                <label i18n="outputAll">Save All</label><label id="saveProcess"></label><label> (Ctrl+S)</label>
             </div>
-
-            <div>
-                <input type="radio" id="lineMode" name="renderMode" value="line">
-                <label for="lineMode" i18n="lineMode">SOLID</label><label>(G)</label><span></span>
+            <div id="outputEdit" class="horizontal"
+                title="Attention: IF there's any file that is zero bytes, remove them after copy & replace back to your archive.">
+                <label i18n="outputEdit">Save Edited Files</label><label> (Ctrl+Shift+S)</label>
             </div>
-        </div>    
-        <div class="horizontal">
-            <label for="lineWidthSlider" i18n="lineWidth"> Size </label>
-            <input id="lineWidthSlider" class="slider transparency" type="range" min="0.5" max="5" step="0.01"  />
-        </div>    
-        <div class="horizontal">
-            <label for="colorSlider" i18n="color"> Color </label>
-            <input id="colorSlider" class="slider color" type="range" min="0" max="1" step="0.01"  />
-        </div>    
-        <div class="horizontal">
-            <label for="alphaSlider" i18n="alpha"> Transparency </label>
-            <input id="alphaSlider" class="slider transparency" type="range" min="0.15" max="1" step="0.01"  />
-        </div>  
-        <h3  i18n="map"> Map </h3>
-        <div class="horizontal">
-            <label for="mapColorSlider" i18n="color"> Color </label>
-            <input id="mapColorSlider" class="slider color" type="range" min="0" max="360" step="1"  />
-        </div>  
-        <div class="horizontal">
-            <label for="saturateSlider" i18n="saturate"> Saturate </label>
-            <input id="saturateSlider" class="slider saturate" type="range" min="0" max="3" step="0.01"  />
-        </div>  
-        <div class="horizontal">
-            <label for="invert" i18n="invert"> Invert </label>
-            <input id="invert" type="checkbox" />
-        </div>  
+            <div id="outputAsFwss" class="horizontal">
+                <label i18n="outputAsFwss">Save as FoW snapshot</label><label
+                    id="saveToFwssProcess"></label><label></label>
+            </div>
+            <div id="clearAll" class="horizontal">
+                <label i18n="clearAll">Clear All Data </label><label> (Ctrl+Q)</label>
+            </div>
+        </div>
+
+        <h2 id="showModeTitle"><span i18n="showModeTitle">Display</span><small>(F2)</small> </h2>
+        <div id="showMode" class="vertical">
+            <div class="horizontal">
+                <div>
+                    <input type="radio" id="fogMode" name="renderMode" value="fog" checked>
+                    <label for="fogMode" i18n="fogMode">FOG</label><label>(F)</label><span></span>
+                </div>
+
+                <div>
+                    <input type="radio" id="lineMode" name="renderMode" value="line">
+                    <label for="lineMode" i18n="lineMode">SOLID</label><label>(G)</label><span></span>
+                </div>
+            </div>
+            <div class="horizontal">
+                <label for="lineWidthSlider" i18n="lineWidth"> Size </label>
+                <input id="lineWidthSlider" class="slider transparency" type="range" min="0.5" max="5" step="0.01" />
+            </div>
+            <div class="horizontal">
+                <label for="colorSlider" i18n="color"> Color </label>
+                <input id="colorSlider" class="slider color" type="range" min="0" max="1" step="0.01" />
+            </div>
+            <div class="horizontal">
+                <label for="alphaSlider" i18n="alpha"> Transparency </label>
+                <input id="alphaSlider" class="slider transparency" type="range" min="0.15" max="1" step="0.01" />
+            </div>
+            <h3 i18n="map"> Map </h3>
+            <div class="horizontal">
+                <label for="mapColorSlider" i18n="color"> Color </label>
+                <input id="mapColorSlider" class="slider color" type="range" min="0" max="360" step="1" />
+            </div>
+            <div class="horizontal">
+                <label for="saturateSlider" i18n="saturate"> Saturate </label>
+                <input id="saturateSlider" class="slider saturate" type="range" min="0" max="3" step="0.01" />
+            </div>
+            <div class="horizontal">
+                <label for="invert" i18n="invert"> Invert </label>
+                <input id="invert" type="checkbox" />
+            </div>
+        </div>
+
+        <h2 id="eraserTitle"><span i18n="eraserTitle">Erasers</span><small>(F3)</small> </h2>
+        <div id="eraser" class="vertical">
+            <div id="eraserDiv" class="horizontal">
+                <label for="circleEraser" i18n="eraser"> Eraser</label>
+                <input id="circleEraser" type="range" min="1" max="100" step="1" /><label>(E)</label>
+            </div>
+            <div id="AIEraser" class="horizontal">
+                <label i18n="AIEraser"> AI Eraser</label><label>(R) </label>
+            </div>
+            <div id="revertEraser" class="horizontal">
+                <label i18n="revertEraser"> Revert</label><label>(Ctrl+Z) </label>
+            </div>
+            <div id="ESC" class="horizontal">
+                <label i18n="Escape"> Escape</label><label>(ESC) </label>
+            </div>
+        </div>
+
+        <h2 id="drawTitle"><span i18n="drawTitle">Drawing</span><small>(F4)</small> </h2>
+        <div id="draw" class="vertical">
+            <div id="drawLine" class="horizontal">
+                <label i18n="drawLine"> Draw A Line</label><label>(C) </label>
+            </div>
+            <div id="editLine" class="horizontal">
+                <label i18n="editLine"> Edit Lines</label><label>(X) </label>
+            </div>
+            <div id="deleteLine" class="horizontal">
+                <label i18n="deleteLine"> Delete Lines</label><label>(D) </label>
+            </div>
+            <div id="drawFinish" class="horizontal">
+                <label i18n="drawFinish"> Save Lines </label><label>(S) </label>
+            </div>
+            <div id="ESC" class="horizontal">
+                <label i18n="Escape"> Escape</label><label>(ESC) </label>
+            </div>
+        </div>
+
+        <h2 id="photoTitle"><span i18n="photoTitle"> Photo GPS </span><small>(F5)</small> </h2>
+        <div id="photo" class="vertical">
+            <fieldset id="importPhoto">
+                <legend i18n="importPhoto">Import Photos</legend>
+                <p id="importPhotoMsg" i18n="importPhotoMsg"> Drag your photos here</p>
+                <a href="#" i18n="openManually">Open Manually</a>
+                <input type="file" multiple id="inputPhoto" style="display:none" accept="image/*">
+            </fieldset>
+
+            <div id="clearPhotoMarkers" class="horizontal">
+                <label i18n="clearPhotoMarkers"> Clear Markers </label><label></label>
+            </div>
+        </div>
+
+        <h2 id="gpxTitle"><span i18n="gpxTitle"> GPX/KML </span><small>(F6)</small> </h2>
+        <div id="gpx" class="vertical">
+            <fieldset id="importGPX">
+                <legend i18n="importGPX">Import GPX/KML file</legend>
+                <p id="importGPXMsg" i18n="importGPXMsg"> Drag GPX/KML files here</p>
+                <a href="#" i18n="openManually">Open Manually</a>
+                <input type="file" multiple id="inputGPX" style="display:none" accept=".gpx, .kml">
+            </fieldset>
+            <div id="saveGPXtoMap" class="horizontal">
+                <label i18n="saveGPXtoMap"> Write GPX/KML to your data </label><label id="saveGPXProcess"></label>
+            </div>
+            <div id="clearGPX" class="horizontal">
+                <label i18n="clearGPXLayer"> Remove all GPX/KML layers </label><label></label>
+            </div>
+        </div>
+
+    </div>
+    <div id="map">
+
+        <footer>
+            <p class="footer">This is modified fork of <a class="footer" href="https://fow.vicc.wang/eraser.html">FOW
+                    ERASER</a>. All credit goes to the author, <a class="footer" href="https://www.vicc.wang/">Vic
+                    Wang</a>.</p>
+        </footer>
+
     </div>
 
-    <h2 id="eraserTitle"><span i18n="eraserTitle">Erasers</span><small>(F3)</small> </h2>
-    <div id="eraser" class="vertical">
-        <div id="eraserDiv" class="horizontal">
-            <label for="circleEraser" i18n="eraser"> Eraser</label>
-            <input id="circleEraser" type="range" min="1" max="100" step="1"  /><label>(E)</label>
-        </div>    
-        <div id="AIEraser" class="horizontal">
-            <label i18n="AIEraser"> AI Eraser</label><label>(R) </label>
-        </div>
-        <div id="revertEraser" class="horizontal">
-            <label i18n="revertEraser"> Revert</label><label>(Ctrl+Z) </label>
-        </div>
-        <div id="ESC" class="horizontal">
-            <label i18n="Escape"> Escape</label><label>(ESC) </label>
-        </div>
-    </div> 
-
-    <h2 id="drawTitle"><span i18n="drawTitle">Drawing</span><small>(F4)</small> </h2>
-    <div id="draw" class="vertical">
-        <div id="drawLine" class="horizontal">
-            <label i18n="drawLine"> Draw A Line</label><label>(C) </label>
-        </div>
-        <div id="editLine" class="horizontal">
-            <label i18n="editLine"> Edit Lines</label><label>(X) </label>
-        </div>
-        <div id="deleteLine" class="horizontal">
-            <label i18n="deleteLine"> Delete Lines</label><label>(D) </label>
-        </div>
-        <div id="drawFinish" class="horizontal">
-            <label i18n="drawFinish"> Save Lines </label><label>(S) </label>
-        </div>
-        <div id="ESC" class="horizontal">
-            <label i18n="Escape"> Escape</label><label>(ESC) </label>
-        </div>
-    </div>
-
-    <h2 id="photoTitle"><span i18n="photoTitle"> Photo GPS </span><small>(F5)</small> </h2>
-    <div id="photo" class="vertical">
-        <fieldset id="importPhoto">
-            <legend i18n="importPhoto">Import Photos</legend>
-            <p id="importPhotoMsg" i18n="importPhotoMsg"> Drag your photos here</p>
-            <a href="#" i18n="openManually">Open Manually</a>
-            <input type="file" multiple id="inputPhoto" style="display:none" accept="image/*">
-        </fieldset>
-
-        <div id="clearPhotoMarkers" class="horizontal">
-            <label i18n="clearPhotoMarkers"> Clear Markers </label><label></label>
-        </div>
-    </div>
-
-    <h2 id="gpxTitle"><span i18n="gpxTitle"> GPX/KML </span><small>(F6)</small> </h2>
-    <div id="gpx" class="vertical">
-        <fieldset id="importGPX">
-            <legend i18n="importGPX">Import GPX/KML file</legend>
-            <p id="importGPXMsg" i18n="importGPXMsg"> Drag GPX/KML files here</p>
-            <a href="#" i18n="openManually">Open Manually</a>
-            <input type="file" multiple id="inputGPX" style="display:none" accept=".gpx, .kml">
-        </fieldset>
-        <div id="saveGPXtoMap" class="horizontal">
-            <label i18n="saveGPXtoMap"> Write GPX/KML to your data </label><label id="saveGPXProcess"></label>
-        </div>
-        <div id="clearGPX" class="horizontal">
-            <label i18n="clearGPXLayer"> Remove all GPX/KML layers </label><label></label>
-        </div>
-    </div>
-
-</div>
-<div id="map">
-
-<footer>
-    <p class="footer">This is modified fork of <a class="footer" href="https://fow.vicc.wang/eraser.html" >FOW ERASER</a>. All credit goes to the author, <a class="footer" href="https://www.vicc.wang/">Vic Wang</a>.</p>
-</footer>
-
-</div>
-
-<script src="lib/eraser.bundle.js"></script>
+    <script src="lib/eraser.bundle.js"></script>
 </body>
+
 </html>
