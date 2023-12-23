@@ -115,4 +115,19 @@ footer {
     bottom: 0;
     text-align: center;
     z-index: 999;
+    background-color: #333333;
 }
+
+.footer{
+    color: white;
+}
+
+a {
+    color: white;
+    text-decoration: underline;
+}
+
+a:visited {
+color: white;
+}
+  
